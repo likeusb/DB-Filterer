@@ -1,12 +1,13 @@
 var imgs = document.getElementsByClassName('img');
 var imgContainers = document.getElementsByClassName('imgContainer');
 var shrink = document.getElementsByClassName('shrink');
+var prev = document.getElementsByClassName('previous');
+var next = document.getElementsByClassName('next');
 
 for (var i = 0; i < imgs.length; i++) {
     imgs[i].addEventListener('click', function() {
         this.parentElement.classList.remove('inactive');
         this.parentElement.classList.add('active');
-        previous();
     });
 
     shrink[i].addEventListener('click', function() {
@@ -43,7 +44,60 @@ function regexFilter(string) {
     name = namePre[namePre.length - 1];
 };
 
-function previous() {
-    console.log(imgContainers);
-    console.log(imgContainers.indexOf(this));
+for (var i = 0; i < prev.length; i++) {
+    prev[i].addEventListener('click', function() {
+        idOfImg = this.parentElement.parentElement.id;
+        previousImg(idOfImg);
+    });
+};
+
+for (var i = 0; i < next.length; i++) {
+    next[i].addEventListener('click', function() {
+        idOfImg = this.parentElement.parentElement.id;
+        nextImg(idOfImg);
+    });
+}
+
+function previousImg(id) {
+    let curArrId = id - 1;
+    let prevArrId = curArrId - 1;
+
+    if (prevArrId < 0) {
+        prevArrId = imgContainers.length - 1;
+    }
+
+    console.log(imgContainers[prevArrId], imgContainers[curArrId]);
+
+    imgContainers[prevArrId].classList.add('moveFromLeft');
+    imgContainers[curArrId].classList.add('moveToRight');
+
+    setTimeout(() => {
+        imgContainers[prevArrId].classList.remove('moveFromLeft');
+        imgContainers[curArrId].classList.remove('moveToRight');
+
+        imgContainers[prevArrId].classList.add('active');
+        imgContainers[curArrId].classList.remove('active');
+    }, 200);
+}
+
+function nextImg(id) {
+    let curArrId = id - 1;
+    let nextArrId = curArrId + 1;
+
+    if (nextArrId == imgContainers.length) {
+        nextArrId = 0;
+    }
+
+    console.log(imgContainers[nextArrId], imgContainers[curArrId]);
+
+    imgContainers[nextArrId].classList.add('moveFromRight');
+    imgContainers[curArrId].classList.add('moveToLeft');
+
+    setTimeout(() => {
+        imgContainers[nextArrId].classList.remove('moveFromRight');
+        imgContainers[curArrId].classList.remove('moveToLeft');
+
+        imgContainers[nextArrId].classList.add('active');
+        imgContainers[curArrId].classList.remove('active');
+    }, 200);
 }
