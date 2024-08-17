@@ -76,29 +76,29 @@ body {
     position: absolute;
 }
 
-.imgContainer.active img#shrink,
-.imgContainer.active img#download {
+.imgContainer.active img.shrink,
+.imgContainer.active img.download {
     width: 60px;
     top: 10px;
 }
 
-.imgContainer.active img#previous,
-.imgContainer.active img#next {
+.imgContainer.active img.previous,
+.imgContainer.active img.next {
     width: 40px;
 }
 
-.imgContainer.active img#shrink {
+.imgContainer.active img.shrink {
     right: 10px;
 }
 
-.imgContainer.active img#download {
+.imgContainer.active img.download {
     left: 10px;
 }
 
-.imgContainer.active img#previous {
+.imgContainer.active img.previous {
     left: 10px;
 }
 
-.imgContainer.active img#next {
+.imgContainer.active img.next {
     right: 10px;
 }
