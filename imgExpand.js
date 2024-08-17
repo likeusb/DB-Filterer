@@ -1,10 +1,12 @@
-function expandImg() {
-    document.getElementById('img').style.width = "90%";
-}
+document.getElementById('shrink').addEventListener('click', () => {
+    document.getElementsByClassName('imgContainer')[0].classList.remove('active');
+    document.getElementsByClassName('imgContainer')[0].classList.add('inactive');
+});
 
-function shrinkImg() {
-    document.getElementById('img').style.width = "500px";
-}
+document.getElementById('img').addEventListener('click', () => {
+    document.getElementsByClassName('imgContainer')[0].classList.remove('inactive');
+    document.getElementsByClassName('imgContainer')[0].classList.add('active');
+});
 
 document.getElementById('download').addEventListener('click', () => {
     var link = document.createElement("a");
