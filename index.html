@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        button {
+            width: max-content;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="limitedInsert()">limited insert</button>
+    <div>
+        <button onclick="sequentialInsert()">sequential insert</button>
+        <button onclick="resetSequential()">reset sequential insert</button>
+    </div>
+    <button onclick="randomInsert()">random insert</button>
+    <script src="script.js"></script>
+</body>
+</html>
