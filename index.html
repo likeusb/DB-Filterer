@@ -16,12 +16,22 @@
     </style>
 </head>
 <body>
-    <button onclick="limitedInsert()">limited insert</button>
+    <div>
+        <button onclick="limitedInsertPrev()">Previous set</button>
+        <button onclick="limitedInsertNext()">Next set</button>
+        <p id="limited"></p>
+    </div>
     <div>
         <button onclick="sequentialInsert()">sequential insert</button>
         <button onclick="resetSequential()">reset sequential insert</button>
+        <button onclick="returnToPrevious()">return to previous number</button>
+        <p id="sequential"></p>
     </div>
-    <button onclick="randomInsert()">random insert</button>
+    <div>
+        <button onclick="randomInsert()">random insert</button>
+        <p id="random"></p>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

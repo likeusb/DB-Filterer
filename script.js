@@ -14,23 +14,59 @@ function getCookie(name) {
 
 var numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'];
 
+window.onload = function() {
+    sequentialInsert();
+    randomInsert();
+    limitedInsert();
+}
+
+var initial = 'notYet';
 function limitedInsert() {
-    for (var i = 1; i <= numbers.length / 10; i++) {
-        console.log(numbers.slice((i - 1) * 10, i * 10))
-    };
+    if (initial == 'notYet') {
+        i = 1;
+        initial = 'done';
+    }
+
+    if (i == 0) {
+        i = numbers.length / 10;
+    }
+
+    if (i > numbers.length / 10) {
+        i = 1;
+    }
+
+
+    
+    document.getElementById('limited').textContent = numbers.slice((i - 1) * 10, i * 10);
 };
+
+function limitedInsertPrev() {
+    i--;
+    limitedInsert();
+}
+
+function limitedInsertNext() {
+    i++;
+    limitedInsert();
+}
 
 var i = 0;
 
-function sequentialInsert() {
-    if (i <= numbers.length) {
-        i++;
-    };
-    if (i > numbers.length) {
-        i = 1;
-    };
-    console.log(numbers[i-1]);
-    setCookie('sequential', i);
+function sequentialInsert(shouldItIncrement) {
+    if (shouldItIncrement !== 'no') {
+        if (i <= numbers.length) {
+            i++;
+        };
+        if (i > numbers.length) {
+            i = 1;
+        };
+        
+        if (i !== 1) {
+            setCookie('sequential', i);
+        }
+    }
+
+    document.getElementById('sequential').textContent = numbers[i-1];
 };
 
 function resetSequential() {
@@ -44,23 +80,6 @@ var numbersforShuffle = numbers.toString().split(',');
 shuffle(numbersforShuffle);
 
 function randomInsert() {
-    // usedRandom.push(numbersforShuffle[0]);
-    // if (usedRandom.length > numbers.length) {
-    //     usedRandom = [];
-    // }
-    
-    // if (numbersforShuffle.length == 1) {
-    //     numbersforShuffle = numbers.toString().split(',');
-    // }
-    
-    // for (let i = 0; i < numbers.length; i++) {
-    //     if (numbersforShuffle[0] == numbers[i]) {
-    //         numbersforShuffle.splice(0, 1);
-    //         break;
-    //     }
-    // }
-    // console.log(numbersforShuffle[0])
-    
     if (numbersforShuffle.length == 1) {
         shuffle(numbersforShuffle);
     };
@@ -68,9 +87,11 @@ function randomInsert() {
     usedRandom.push(numbersforShuffle[i]);
     i++;
 
-    if (i > numbers.length) {
+    if (i == numbers.length) {
         i = 0;
     };
+
+    document.getElementById('random').textContent = numbersforShuffle[i];
 };
 
 // Credit to @Álvaro González on StackOverflow. Link: https://stackoverflow.com/a/59837259
@@ -82,4 +103,10 @@ function shuffle(arr) {
       arr[j] = arr[k];
       arr[k] = temp;
     }
+}
+
+function returnToPrevious() {
+    var progress = getCookie('sequential');
+    i = progress;
+    sequentialInsert('no');
 }
