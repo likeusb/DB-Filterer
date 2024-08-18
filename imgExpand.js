@@ -66,16 +66,16 @@ function previousImg(id) {
         prevArrId = imgContainers.length - 1;
     }
 
-    console.log(imgContainers[prevArrId], imgContainers[curArrId]);
-
     imgContainers[prevArrId].classList.add('moveFromLeft');
+    imgContainers[prevArrId].classList.add('sitLeft')
+    imgContainers[prevArrId].classList.add('active');
     imgContainers[curArrId].classList.add('moveToRight');
 
     setTimeout(() => {
         imgContainers[prevArrId].classList.remove('moveFromLeft');
         imgContainers[curArrId].classList.remove('moveToRight');
+        imgContainers[prevArrId].classList.remove('sitLeft');
 
-        imgContainers[prevArrId].classList.add('active');
         imgContainers[curArrId].classList.remove('active');
     }, 200);
 }
@@ -88,14 +88,15 @@ function nextImg(id) {
         nextArrId = 0;
     }
 
-    console.log(imgContainers[nextArrId], imgContainers[curArrId]);
-
     imgContainers[nextArrId].classList.add('moveFromRight');
+    imgContainers[nextArrId].classList.add('sitRight');
+    imgContainers[nextArrId].classList.add('active');
     imgContainers[curArrId].classList.add('moveToLeft');
 
     setTimeout(() => {
         imgContainers[nextArrId].classList.remove('moveFromRight');
         imgContainers[curArrId].classList.remove('moveToLeft');
+        imgContainers[nextArrId].classList.remove('sitRight');
 
         imgContainers[nextArrId].classList.add('active');
         imgContainers[curArrId].classList.remove('active');
