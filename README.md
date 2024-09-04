@@ -8,3 +8,9 @@ There are two parts:
   My first attempt at creating code that would allow an image that was clicked to shrink/expand, alongside allowing the user to download the image, and to go to the next/previous images.
 
 Both are accessible through their respective files (index.html for DB and imgExpand.html for image)
+
+![image](https://github.com/user-attachments/assets/cbc654e4-a4e1-4724-a860-80b55ba56a60)
+https://likeusb.github.io/DB-Filterer/
+
+![image](https://github.com/user-attachments/assets/06227116-51d6-445f-86ee-7ca3ade0cc37)
+https://likeusb.github.io/DB-Filterer/imgExpand.html
